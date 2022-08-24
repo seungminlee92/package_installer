@@ -17,15 +17,25 @@ class installer:
         "token": ""
     }
     
-    def __init__(self, package_name:str):
+    __no_print = False
+    
+    def __init__(self, package_name:str, **kwargs):
         """
-        기능: package install
+        function: python package install in pypi
+        
+        if package is in git only, try installer(package_name).git()
         
         Parameter
         --------
         (essential)
         - package_name: str
+        
+        (optional)
+        - no_print: bool; default=False
         """
+        
+        if "no_print" in kwargs: no_print = kwargs["no_print"]
+        else: no_print = self.__no_print
         
         self.pkg_name = package_name
         
@@ -41,11 +51,12 @@ class installer:
             self.command_line = self.__complete_cmd_line("pypi")
             
             self.__run()
-            print(self.result_txt)
+            
+            if not no_print: print(self.result_txt)
             
     def git(self, **kwargs):
         """
-        기능: package install using git url, token
+        function: python package install using git url, token
         
         Parameter
         --------
@@ -53,16 +64,22 @@ class installer:
         - git_url: str
         
         (optional)
+        - no_print: bool; default=False
         - token: str
         """
         
+        if "no_print" in kwargs: no_print = kwargs["no_print"]
+        else: no_print = self.__no_print
+        
         self.__git_info.update({key: value for key, value in kwargs.items() if key in self.__git_info})
         
-        self.command_line = self.__complete_cmd_line("git", **self.__git_info)
-        
-        self.__run()
-        print(self.result_txt)
-    
+        if self.__git_info["git"] == "":
+            print("need git url")
+        else:
+            self.command_line = self.__complete_cmd_line("git", **self.__git_info)
+            self.__run()
+            if not no_print: print(self.result_txt)
+            
     def __run(self):
         try:
             self.__install_result = check_call(self.command_line)
@@ -74,7 +91,7 @@ class installer:
         finally:
             self.__install_result = self.__check_install_result(error, self.pkg_name)
     
-    def __check_install_result(self, error, package_name):
+    def __check_install_result(self, error:bool, package_name:str):
         
         result = 0
         
@@ -89,7 +106,7 @@ class installer:
             
         return result
     
-    def __complete_cmd_line(self, cat, **kwargs):
+    def __complete_cmd_line(self, cat:str, **kwargs):
         
         self.__cat = cat
         

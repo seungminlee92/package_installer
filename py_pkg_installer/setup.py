@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="python-package-installer", 
-    version="1.0.0.4", 
+    version="1.0.0.5", 
     description="python package installer", 
     author="SML", 
     author_email="seungminlee92@kakao.com", 

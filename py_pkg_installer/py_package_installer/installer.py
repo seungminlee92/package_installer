@@ -38,7 +38,7 @@ class installer:
             
         finally:
             if self.action == "upgrade": self.__command_line.update({"upgrade": "--upgrade"})
-            self.command_line = self.__complete_cmd_line("pypl")
+            self.command_line = self.__complete_cmd_line("pypi")
             
             self.__run()
             print(self.result_txt)
@@ -98,7 +98,7 @@ class installer:
             git = kwargs["git"]
             package = f"git+https://{token}@{git}"
         
-        elif self.__cat == "pypl":
+        elif self.__cat == "pypi":
             package = self.pkg_name
             
         command_dict = self.__command_line.copy()
@@ -118,7 +118,7 @@ class installer:
         }
         
         if self.__install_result == -1: # 에러발생
-            if self.__cat == "pypl":
+            if self.__cat == "pypi":
                 linear = f"+{linear['error1']}+"
                 comment = "package not found".center(len(linear)-2, " ")
                 recommand = "please try installing by git"
@@ -154,7 +154,7 @@ class installer:
                 result += f"\n+{comment2}+".center(len(linear), " ")
                 
             elif self.__install_result == 1: # 업그레이드 존재 X
-                recommand = "no upgrade exist in pypl"
+                recommand = "no upgrade exist in pypi"
                 
         result += f"\n{linear}\n\n{recommand.upper()}"
         

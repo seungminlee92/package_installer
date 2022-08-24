@@ -1,5 +1,4 @@
 
-*.txt
-*.whl
-*.gz
-py_pkg_installer/python_package_installer.egg-info/PKG-INFO
+py_pkg_installer/build
+py_pkg_installer/dist
+py_pkg_installer/python_package_installer.egg-info

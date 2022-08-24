@@ -154,7 +154,7 @@ class installer:
                 result += f"\n+{comment2}+".center(len(linear), " ")
                 
             elif self.__install_result == 1: # 업그레이드 존재 X
-                recommand = "no upgrade exist"
+                recommand = "no upgrade exist in pypl"
                 
         result += f"\n{linear}\n\n{recommand.upper()}"
         

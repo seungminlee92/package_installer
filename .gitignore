@@ -1,0 +1,4 @@
+
+*.txt
+*.whl
+pkg_installer.egg-info/PKG-INFO

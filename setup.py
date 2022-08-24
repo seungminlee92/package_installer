@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="pkg-installer", 
-    version="1.0.0.0", 
+    version="1.0.1", 
     author="SML", 
     author_email="seungminlee92@kakao.com", 
     description="git modules installer",

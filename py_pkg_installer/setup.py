@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="pkg-installer", 
-    version="1.0.1", 
+    name="python-package-installer", 
+    version="1.0.0.1", 
     description="python package installer", 
     author="SML", 
     author_email="seungminlee92@kakao.com", 

@@ -1,1 +1,0 @@
-from package_installer.installer import installer

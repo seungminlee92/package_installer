@@ -1,5 +1,5 @@
 
 *.txt
 *.whl
-pkg_installer.egg-info/PKG-INFO
 *.gz
+py_pkg_installer/python_package_installer.egg-info/PKG-INFO

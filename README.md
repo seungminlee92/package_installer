@@ -6,15 +6,15 @@ This package allows python-users to install external-package easily with out com
 # How to install
 
 ```
-pip install package-installer
+pip install python-package-installer
 ```
 
 # How to use
 ```python
 # example
-from package_installer.installer import installer
+from py_package_installer import installer
 
-# if package in pypl
+# if package in pypi
 result = installer("pandas")
 
 # if package in git only
